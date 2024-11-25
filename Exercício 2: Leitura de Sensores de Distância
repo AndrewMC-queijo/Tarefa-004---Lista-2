@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main() {
+    float distancia;
+    char continuar;
+
+    printf("Leitura de Sensores de Distância\n");
+    printf("=================================\n");
+
+    do {
+        printf("\nDigite a distância medida pelo sensor (em cm): ");
+        scanf("%f", &distancia);
+
+        if (distancia < 10) {
+            printf("Alerta: Distância abaixo de 10 cm! Sensor encerrado.\n");
+            break;
+        }
+
+        printf("Distância medida: %.2f cm\n", distancia);
+
+        printf("Deseja continuar? (s/n): ");
+        scanf(" %c", &continuar);
+
+    } while (continuar == 's');
+
+    printf("Leitura de sensores encerrada.\n");
+
+    return 0;
+}
