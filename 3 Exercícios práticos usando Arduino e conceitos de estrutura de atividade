@@ -1,0 +1,62 @@
+1) Declaração do vetor
+int cameraData[10];
+
+2)Função do códigocameraData[3] = analogRead(A1);
+Explicação : Esse código lê o valor do pino analógico A1 usando analogRead(A1)(valor entre 0 e 1023) e o armazena na posição 3 do vetor cameraData.
+
+3) Inicialização do vetor temperaturas
+float temperaturas[] = {25.5, 26.0, 24.8, 27.3, 26.5};
+
+4) Função do código com for
+for (int i = 0; i < 4; i++) {
+    Serial.println(ledPins[i]);
+}
+
+5) Estrutura completa para o código da questão 4
+int ledPins[] = {2, 3, 4, 5}; // Exemplo de valores
+void setup() {
+    Serial.begin(9600);
+    for (int i = 0; i < 4; i++) {
+        Serial.println(ledPins[i]);
+    }
+}
+
+void loop() {
+    // Nenhuma ação no loop neste exemplo
+}
+
+6) Uso da função random()para preencher um vetor
+int randomValues[5];
+
+void setup() {
+    Serial.begin(9600);
+    randomSeed(analogRead(0)); // Inicializa a semente de aleatoriedade
+    for (int i = 0; i < 5; i++) {
+        randomValues[i] = random(0, 100); // Gera valores entre 0 e 99
+        Serial.println(randomValues[i]);
+    }
+}
+
+void loop() {
+    // Nenhuma ação no loop
+}
+
+7) Função do código com break
+for (int i = 0; i < tamanhoVetor; i++) {
+    if (sensorReadings[i] == 150) {
+        break;
+    }
+}
+
+8) Função da instruçãosizeof(sensorData) / sizeof(sensorData[0])
+int sensorData[] = {100, 200, 300, 400};
+int tamanho = sizeof(sensorData) / sizeof(sensorData[0]);
+Serial.println(tamanho); // Saída: 4
+
+
+
+
+
+
+
+
