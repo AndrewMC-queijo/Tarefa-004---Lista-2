@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <math.h>
+
+void calcularMediaEDesvioPadrao(float precos[], int n, float *media, float *desvioPadrao) {
+    float soma = 0, somaQuadrados = 0;
+
+    for (int i = 0; i < n; i++) {
+        soma += precos[i];
+        somaQuadrados += precos[i] * precos[i];
+    }
+
+    *media = soma / n;
+    *desvioPadrao = sqrt((somaQuadrados / n) - (*media * *media));
+}
+
+int main() {
+    int dias, continuar;
+    float media, desvioPadrao;
+
+    printf("Análise de Desempenho de Ações\n");
+    printf("===============================\n");
+
+    do {
+        printf("\nInforme o número de dias para análise: ");
+        scanf("%d", &dias);
+
+        if (dias <= 0) {
+            printf("Número de dias inválido! Tente novamente.\n");
+            continue;
+        }
+
+        float precos[dias];
+        for (int i = 0; i < dias; i++) {
+            printf("Digite o preço da ação no dia %d: ", i + 1);
+            scanf("%f", &precos[i]);
+        }
+
+        calcularMediaEDesvioPadrao(precos, dias, &media, &desvioPadrao);
+
+        printf("\nResultados da Análise:\n");
+        printf("Média dos preços: %.2f\n", media);
+        printf("Desvio padrão: %.2f%%\n", (desvioPadrao / media) * 100);
+
+        if ((desvioPadrao / media) * 100 < 5) {
+            printf("Desempenho: Estável\n");
+        } else {
+            printf("Desempenho: Volátil\n");
+        }
+
+        printf("\nDeseja realizar outra análise? (1 - Sim, 0 - Não): ");
+        scanf("%d", &continuar);
+
+    } while (continuar == 1);
+
+    printf("Programa encerrado. Obrigado por usar o analisador de ações!\n");
+
+    return 0;
+}
