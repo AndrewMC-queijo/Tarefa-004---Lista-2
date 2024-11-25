@@ -1,0 +1,51 @@
+Matriz ambientData
+
+int ambientData[3][5] = {
+    {22, 25, 23, 21, 24},  // Temperatura (°C)
+    {45, 38, 42, 40, 37},  // Umidade do solo (%)
+    {400, 380, 420, 410, 390} // Concentração de CO₂ (ppm)
+};
+
+A)A primeira linha ( 22, 25, 23, 21, 24) representa os valores de temperatura (em °C) encontrados em cinco momentos diferentes no primeiro local de monitoramento .
+
+B)Valores de umidade do solo na segunda linha :45 ,38 ,42 ,40 ,37
+\text{Média} = \frac{45 + 38 + 42 + 40 + 37}{5} = \frac{202}{5} = 40,4 \, \text{(em %)}
+Resposta : A média da umidade do solo é 40,4% 
+
+C)Valores de CO₂ na terceira linha :400 ,380 ,420 ,410 ,390
+Valor máximo : 420 ppm
+Momento : O valor ocorre no terceiro momento (índice 2, considerando o vetor começa do zero) .
+Resposta : O CO₂ atingiu o valor máximo no terceiro momento .
+
+D)
+int ambientData[3][5] = {
+    {22, 25, 23, 21, 24},  // Temperatura (°C)
+    {45, 38, 42, 40, 37},  // Umidade do solo (%)
+    {400, 380, 420, 410, 390} // Concentração de CO₂ (ppm)
+};
+
+void setup() {
+    Serial.begin(9600);
+
+    int totalLocais = 3; // Número de locais monitorados
+    int totalLeituras = 5; // Número de momentos registrados
+    int somaTemperaturas = 0;
+
+    for (int i = 0; i < totalLocais; i++) {
+        for (int j = 0; j < totalLeituras; j++) {
+            somaTemperaturas += ambientData[i][j];
+        }
+    }
+
+    float mediaTemperaturas = somaTemperaturas / (float)(totalLocais * totalLeituras);
+    Serial.print("Media de Temperatura: ");
+    Serial.println(mediaTemperaturas);
+}
+
+void loop() {
+    // Não é necessário neste caso
+}
+
+
+
+
