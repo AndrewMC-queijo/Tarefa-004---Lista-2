@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <unistd.h> // Para a função sleep()
+
+int main() {
+    float combustivel;
+
+    printf("Monitoramento de Combustível do Carro Elétrico\n");
+    printf("=============================================\n");
+
+    while (1) {
+        printf("\nDigite o nível de combustível atual (em %%): ");
+        scanf("%f", &combustivel);
+
+        if (combustivel < 15.0) {
+            printf("ALERTA: Nível de combustível crítico (%.2f%%)!\n", combustivel);
+            printf("Por favor, recarregue o veículo.\n");
+        } else if (combustivel == 100.0) {
+            printf("Tanque cheio (%.2f%%). Monitoramento finalizado.\n", combustivel);
+            break; // Sai do loop quando o tanque estiver cheio
+        } else {
+            printf("Nível de combustível adequado (%.2f%%).\n", combustivel);
+        }
+
+        // Simulação de monitoramento contínuo a cada 1 segundo
+        sleep(1);
+    }
+
+    return 0;
+}
